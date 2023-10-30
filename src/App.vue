@@ -16,29 +16,8 @@
     <div class="container-fluid">
       <section class="row h-100">
         <div class="col-md-2 display-none display-md bg-white">
-          <div v-if="account.id" class="">
-            <div class="text-center">
-              <router-link :to="{ name: 'Profile', params: { accountId: account.id } }">
-                <img :src="account.picture" class="rounded-circle text-center side-img " alt="">
-              </router-link>
-            </div>
-            <div>
-              <p>
-                {{ account.class }}
-              </p>
-              <p>
-                {{ account.name }}
-              </p>
-              <div class="d-flex flex-column">
-                <i v-if="account.github" class="mdi mdi-github"> {{ account.github }}</i>
-                <i v-if="account.linkedin" class="mdi mdi-linkedin"> {{ account.linkedin }}</i>
-                <i v-if="account.resume" class="mdi mdi-file-account"> {{ account.resume }}</i>
-              </div>
-            </div>
-          </div>
-          <div v-else>
-            put login thing here
-          </div>
+          <!-- TODO fix when going from one profile page to another -->
+          <Login />
         </div>
         <div class="col-md-10 col-12">
           <router-view />
@@ -53,6 +32,7 @@
 import { computed } from 'vue'
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
+import Login from './components/Login.vue'
 
 export default {
   setup() {
@@ -61,7 +41,7 @@ export default {
       account: computed(() => AppState.account)
     }
   },
-  components: { Navbar }
+  components: { Navbar, Login }
 }
 </script>
 <style lang="scss">

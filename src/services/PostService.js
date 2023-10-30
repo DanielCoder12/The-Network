@@ -19,6 +19,16 @@ class PostService {
         AppState.posts.unshift(new Post(res.data))
     }
 
+    async getPostsFromSearch(data) {
+        const res = await api.get(`api/posts?query=${data}`)
+        logger.log('posts res', res.data)
+        AppState.nextPage = res.data.older
+        AppState.previousPage = res.data.newer
+        AppState.posts = res.data.posts.map(p => new Post(p))
+    }
+
+
+
     async changePosts(link) {
         const res = await api.get(link)
         // logger.log('new posts', res.data)

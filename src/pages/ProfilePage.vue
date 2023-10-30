@@ -28,7 +28,7 @@
 <script>
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState';
-import { computed, reactive, onMounted, onUnmounted } from 'vue';
+import { computed, reactive, onMounted, onUnmounted, watchEffect } from 'vue';
 import { logger } from '../utils/Logger';
 import { postService } from '../services/PostService';
 import Pop from '../utils/Pop';
@@ -69,6 +69,9 @@ export default {
                 Pop.error(error)
             }
         }
+        const router = useRoute()
+        // watchEffect(())
+
         onMounted(() => {
             clearAppState();
             getProfileById();

@@ -9,7 +9,7 @@
                 </i>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <!-- TODO MAKE EDIT WORK -->
-                    <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="dropdown-item">Edit</a>
+                    <a data-bs-toggle="modal" data-bs-target="#editModal" class="dropdown-item">Edit</a>
                     <!-- TODO FIX DELETE -->
                     <p @click="deletePost(post.id)" class="text-danger dropdown-item">Delete</p>
                 </div>
@@ -36,13 +36,22 @@
         <img v-if="post.imgUrl" class="img-fluid post-img" :src="post.imgUrl" alt="">
         <div class="d-flex justify-content-end align-items-center">
             <!-- TODO MAKE LIKES FUNCTIONAL -->
-            <i v-if="!post.likeIds.find(id => id == account.id)" @click="changeLikeState(post.id)"
-                class="mdi mdi-heart-outline fs-2 ">
-            </i>
-            <i v-else class="mdi mdi-heart fs-2"></i>
-            <span class="fs-4"> {{ post.likeIds.length }}</span>
+
+            <div v-if="!user.isAuthenticated" @click="login">
+                <i class="mdi mdi-heart-outline blue-text fs-2 ">
+                </i>
+                <span class="fs-4"> {{ post.likeIds.length }}</span>
+            </div>
+            <div v-else>
+                <i v-if="!post.likeIds.find(id => id == account.id)" @click="changeLikeState(post.id)"
+                    class="mdi mdi-heart-outline blue-text fs-2 ">
+                </i>
+                <i v-else @click="changeLikeState(post.id)" class="mdi mdi-heart blue-text fs-2"></i>
+                <span class="fs-4"> {{ post.likeIds.length }}</span>
+            </div>
         </div>
     </div>
+    <EditPostModalVue />
 </template>
 
 
@@ -54,14 +63,18 @@ import { Account } from '../models/Account';
 import { RouterLink } from 'vue-router';
 import Pop from '../utils/Pop';
 import { postService } from '../services/PostService';
+import { AuthService } from '../services/AuthService';
 export default {
     props: {
         post: { type: Post, required: true }
     },
     setup() {
         return {
-
+            async login() {
+                AuthService.loginWithPopup()
+            },
             account: computed(() => AppState.account),
+            user: computed(() => AppState.user),
             async deletePost(postId) {
                 try {
                     const yes = await Pop.confirm('Delete Post?')
@@ -91,6 +104,10 @@ export default {
 <style lang="scss" scoped>
 .no-blue {
     color: inherit;
+}
+
+.blue-text {
+    color: #8ADDD4;
 }
 
 .post-img {

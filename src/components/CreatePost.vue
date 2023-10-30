@@ -5,20 +5,20 @@
         </router-link>
         <div class="w-100">
             <form @submit.prevent="createPost()">
-                <div class="form-group">
-                    <textarea class="form-control " v-model="editable.body" required placeholder="share whats happening..."
-                        id="exampleFormControlTextarea1" rows="3"></textarea>
+                <div class="form-group pe-3">
+                    <textarea class="form-control m-3 textarea-border " v-model="editable.body" required
+                        placeholder="share whats happening..." id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between m-3 align-items-center">
 
                     <div class="form-group">
 
-                        <input type="url" v-model="editable.imgUrl" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp" placeholder="Enter Image Url">
+                        <input type="url" v-model="editable.imgUrl" class="form-control textarea-border"
+                            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Image Url">
                     </div>
 
                     <button v-if="editable.body == ''" disabled class="btn"><i class="mdi mdi-send"></i> Post</button>
-                    <button v-else class="btn"><i class="mdi mdi-send"></i> Post</button>
+                    <button v-else class="btn"><i class="mdi mdi-send blue-text"></i> Post</button>
                 </div>
             </form>
         </div>
@@ -64,5 +64,13 @@ export default {
     height: 4rem;
     aspect-ratio: 1/1;
 
+}
+
+.blue-text {
+    color: #8ADDD4;
+}
+
+.textarea-border {
+    border: 2px dotted #8ADDD4;
 }
 </style>

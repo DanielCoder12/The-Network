@@ -12,7 +12,7 @@ const routes = [
     component: loadPage('HomePage')
   },
   {
-    path: '/search',
+    path: '/search/:query',
     name: 'Search',
     component: loadPage('SearchPage')
   },

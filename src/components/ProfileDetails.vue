@@ -10,14 +10,14 @@
                     alt="">
             </div>
             <div>
-                <a v-if="profile.github" :href="profile.github">
-                    <i class="mdi mdi-github"></i>
+                <a class="pe-3" v-if="profile.github" :href="profile.github">
+                    <i class="mdi mdi-github fs-1"></i>
                 </a>
-                <a v-if="profile.linkedIn" :href="profile.linkedIn">
-                    <i class="mdi mdi-linkedin"></i>
+                <a class="pe-3" v-if="profile.linkedin" :href="profile.linkedin">
+                    <i class="mdi mdi-linkedin fs-1"></i>
                 </a>
-                <a v-if="profile.resume" :href="profile.resume">
-                    <i class="mdi mdi-file-account"></i>
+                <a class="pe-3" v-if="profile.resume" :href="profile.resume">
+                    <i class="mdi mdi-file-account fs-1"></i>
                 </a>
             </div>
         </div>
@@ -61,6 +61,10 @@ export default {
     position: relative;
     top: -15px;
     left: -18%;
+}
+
+a {
+    color: inherit;
 }
 
 .bio-position {
