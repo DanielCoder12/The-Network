@@ -1,9 +1,11 @@
 <template>
   <span class="navbar-text">
-    <button class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0" @click="login"
-      v-if="!user.isAuthenticated">
-      Login
-    </button>
+    <div class="text-center" v-if="!user.isAuthenticated">
+      <button class="btn btn-outline-dark selectable text-center fs-2 lighten-30 text-uppercase my-2 my-lg-0"
+        @click="login">
+        Login
+      </button>
+    </div>
     <div v-else>
 
       <div v-if="account.id" class="">
