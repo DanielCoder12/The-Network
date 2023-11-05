@@ -69,8 +69,13 @@ export default {
                 Pop.error(error)
             }
         }
-        const router = useRoute()
-        // watchEffect(())
+        // const route = useRoute()
+        watchEffect(() => {
+            route.params
+            clearAppState();
+            getProfileById();
+            getAds();
+        })
 
         onMounted(() => {
             clearAppState();

@@ -38,20 +38,19 @@
             <!-- TODO MAKE LIKES FUNCTIONAL -->
 
             <div v-if="!user.isAuthenticated" @click="login">
-                <i class="mdi mdi-heart-outline blue-text fs-2 ">
+                <i role="button" class="mdi mdi-heart-outline blue-text fs-2 ">
                 </i>
                 <span class="fs-4"> {{ post.likeIds.length }}</span>
             </div>
             <div v-else>
-                <i v-if="!post.likeIds.find(id => id == account.id)" @click="changeLikeState(post.id)"
+                <i v-if="!post.likeIds.find(id => id == account.id)" @click="changeLikeState(post.id)" role="button"
                     class="mdi mdi-heart-outline blue-text fs-2 ">
                 </i>
-                <i v-else @click="changeLikeState(post.id)" class="mdi mdi-heart blue-text fs-2"></i>
+                <i v-else @click="changeLikeState(post.id)" role="button" class="mdi mdi-heart blue-text fs-2"></i>
                 <span class="fs-4"> {{ post.likeIds.length }}</span>
             </div>
         </div>
     </div>
-    <EditPostModalVue />
 </template>
 
 

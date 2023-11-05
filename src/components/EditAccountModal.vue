@@ -11,14 +11,16 @@
                             <form @submit.prevent="changeAccountDetails()">
                                 <div class="col-12">
                                     <section class="row">
-                                        <div class="col-12 d-flex justify-content-between"
-                                            style=" width: 100%;
-                                            height: 10rem;
-                                            object-fit: cover;
-                                            object-position: 50% 50%;
-                                             /*TODO FIX THIS  */
-                                            background-image: url('https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000000964/811461b8d1cacf1f2da791b478dccfe2a55457780364c3d5a95fbfcdd4c3086f');">
-                                            <div class="d-flex go-down align-items-center ps-2">
+                                        <div class="col-12 d-flex justify-content-between" :style="{
+                                            width: '100%',
+                                            height: '10rem',
+                                            backgroundSize: 'cover',
+                                            objectFit: 'cover',
+                                            objectPosition: '50% 50%',
+                                            /*TODO FIX THIS  */
+                                            backgroundImage: `url(${profile.coverImg})`
+                                        }">
+                                            <div class=" d-flex go-down align-items-center ps-2">
                                                 <img class="profile-picture  img-fluid rounded-circle"
                                                     :src="profile.picture" alt="">
                                                 <p class="pt-5 fs-2">{{ profile.name }}</p>

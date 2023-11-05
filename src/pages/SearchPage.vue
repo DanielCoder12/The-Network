@@ -48,6 +48,13 @@ import SearchProfile from '../components/SearchProfile.vue';
 export default {
   setup() {
     const route = useRoute();
+
+    watchEffect(() => {
+      route.params
+      getPostsFromSearch();
+      getAccFromSearch();
+    })
+
     onMounted(() => {
       getPostsFromSearch();
       getAccFromSearch();

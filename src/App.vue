@@ -26,6 +26,7 @@
       </section>
     </div>
   </main>
+  <EditPostModalVue />
 </template>
 
 <script>

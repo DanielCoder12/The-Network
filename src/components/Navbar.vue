@@ -22,10 +22,10 @@
             </button>
           </router-link> -->
           <button v-if="editable.link != ''" @click="changeRoute()" class="btn btn-light">
-            <i class="mdi mdi-magnify"></i>
+            <i role="button" class="mdi mdi-magnify"></i>
           </button>
           <button v-else disabled @click="changeRoute()" class="btn btn-light">
-            <i class="mdi mdi-magnify"></i>
+            <i role="button" class="mdi mdi-magnify"></i>
           </button>
 
         </div>
@@ -55,7 +55,7 @@ export default {
       changeRoute() {
         const value = editable.value.link
         editable.value.link = ''
-        router.push(`/search/${value}`)
+        router.push({ name: 'Search', params: { query: value } })
       }
     }
   },
